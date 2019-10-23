@@ -44,3 +44,11 @@ function handleCardClick (event) {
 
 // Add event listener to  all the board.
 board.addEventListener('click', handleCardClick);
+
+// Create open function that opens the cards (adds 'open' class to the card and add the card to openCards list).
+function open (card) {
+    if (!card.classList.contains('open') && !card.classList.contains('match')){
+        card.classList.add('open');
+        addToOpenCards(card);
+    }
+}
