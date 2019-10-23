@@ -74,3 +74,8 @@ function checkForMatch () {
         openCards = [];
     }
 }
+//Declare match() function that adds 'match' class to the two matched cards.
+function match (card) {
+    card.classList.add('match');
+    card.classList.remove('open');
+}
