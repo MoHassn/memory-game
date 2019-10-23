@@ -52,3 +52,13 @@ function open (card) {
         addToOpenCards(card);
     }
 }
+
+// Define Array of open cards
+let openCards = [];
+// Declare the function that adds cards to openCards list
+function addToOpenCards (card) {
+    openCards.push(card);
+    if (openCards.length == 2){
+    checkForMatch();
+    }
+}
