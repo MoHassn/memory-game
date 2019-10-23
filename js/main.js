@@ -62,3 +62,15 @@ function addToOpenCards (card) {
     checkForMatch();
     }
 }
+// Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
+function checkForMatch () {
+    if (openCards[0].isEqualNode(openCards[1])) {
+        match(openCards[0]);
+        match(openCards[1]);
+        openCards = [];
+    }else {
+        openCards[0].classList.remove('open');
+        openCards[1].classList.remove('open');
+        openCards = [];
+    }
+}
