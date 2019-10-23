@@ -1,5 +1,5 @@
 /* Shuffling the cards at the begining.*/
-const cards = document.querySelectorAll('.card');
+let cards = document.querySelectorAll('.card');
 
 //Create the shuffling function
 function shuffle (arr) {
@@ -24,5 +24,23 @@ for (const card of shuffledCardsArray) {
     NEW_CARDS.appendChild(card);
 }
 const board = document.querySelector('.board');
+
+// Change the cards on the page with the new shuffled ones
 board.innerHTML = '';
 board.appendChild(NEW_CARDS);
+
+//update the cards list with the new shuffled cards.
+cards = document.querySelectorAll('.card');
+
+// Creat event handler function for all cards.
+
+function handleCardClick (event) {
+    let target = event.target;
+    let card = target.closest('li');
+    // if the click was not inside a card then return
+    if (!card) return;
+    open(card);
+}
+
+// Add event listener to  all the board.
+board.addEventListener('click', handleCardClick);
