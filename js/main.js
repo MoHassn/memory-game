@@ -62,8 +62,11 @@ function addToOpenCards (card) {
         checkForMatch();
     }
 }
+// Define a moves counter
+let moves = 0;
 // Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
 function checkForMatch () {
+    moves++;
     if (openCards[0].isEqualNode(openCards[1])) {
         match(openCards[0]);
         match(openCards[1]);
