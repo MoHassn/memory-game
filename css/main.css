@@ -27,7 +27,7 @@ body {
     justify-items: center;
     align-items: center;
     grid-gap: 10px;
-    margin: 50px auto;
+    margin: 20px auto;
     padding: 30px;
     background: linear-gradient(45deg, #DAF7DC, #ABC8C0);
     border-radius: 20px;
@@ -53,4 +53,20 @@ body {
     font-size: 40px;
     background-color: #7a506f;
     color: #b3db6d;
+}
+
+.score-panel {
+    display: flex;
+    width: 650px;
+    margin: 5px auto;
+    justify-content: space-around;
+}
+
+ul.stars {
+    list-style: none;
+    display: flex;
+}
+
+.restart {
+    cursor: pointer;
 }
