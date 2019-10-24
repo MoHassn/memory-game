@@ -59,7 +59,7 @@ let openCards = [];
 function addToOpenCards (card) {
     openCards.push(card);
     if (openCards.length == 2){
-    checkForMatch();
+        checkForMatch();
     }
 }
 // Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
@@ -67,6 +67,7 @@ function checkForMatch () {
     if (openCards[0].isEqualNode(openCards[1])) {
         match(openCards[0]);
         match(openCards[1]);
+        checkForEnd();
         openCards = [];
     }else {
         openCards[0].classList.remove('open');
@@ -78,4 +79,12 @@ function checkForMatch () {
 function match (card) {
     card.classList.add('match');
     card.classList.remove('open');
+}
+
+// Declare a function that checks if all the cards were matched
+
+function checkForEnd () {
+    if (cardsArray.every((element) => element.classList.contains('match'))) {
+        // End the game
+    }
 }
