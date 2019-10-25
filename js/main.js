@@ -64,9 +64,17 @@ function addToOpenCards (card) {
 }
 // Define a moves counter
 let moves = 0;
+
+// Define a function that increment the moves and change it on the page
+// every time there is a checkForMatch
+
+function incrementMoves () {
+    moves++;
+    document.querySelector('.moves').innerText = moves;
+}
 // Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
 function checkForMatch () {
-    moves++;
+    incrementMoves();
     if (openCards[0].isEqualNode(openCards[1])) {
         match(openCards[0]);
         match(openCards[1]);
