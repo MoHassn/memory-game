@@ -1,6 +1,8 @@
 /* Shuffling the cards at the begining.*/
 let cards = document.querySelectorAll('.card');
 
+const board = document.querySelector('.board');
+
 //Create the shuffling function
 function shuffle (arr) {
     let currentIndex = arr.length-1, temp, randomIndex;
@@ -14,23 +16,31 @@ function shuffle (arr) {
     }
     return arr;
 }
-// Crating an arry of he cards to pass it to the shuffle function
-let cardsArray = Array.from(cards);
-let shuffledCardsArray = shuffle(cardsArray);
+/*
+  Wrap all the code that updates the content on the page in a function
+*/
+function updateCards(cards) {
+    // Crating an arry of he cards to pass it to the shuffle function
+    let cardsArray = Array.from(cards);
+    let shuffledCardsArray = shuffle(cardsArray);
 
-//Creating a documet fragment containing the shuffled array content to add it to the page.
-const NEW_CARDS = document.createDocumentFragment();
-for (const card of shuffledCardsArray) {
-    NEW_CARDS.appendChild(card);
+    //Creating a documet fragment containing the shuffled array content to add it to the page.
+    const NEW_CARDS = document.createDocumentFragment();
+    for (const card of shuffledCardsArray) {
+        NEW_CARDS.appendChild(card);
+    }
+
+    // Change the cards on the page with the new shuffled ones
+    board.innerHTML = '';
+    board.appendChild(NEW_CARDS);
+    //update the cards list with the new shuffled cards.
+    cards = document.querySelectorAll('.card');
+
 }
-const board = document.querySelector('.board');
 
-// Change the cards on the page with the new shuffled ones
-board.innerHTML = '';
-board.appendChild(NEW_CARDS);
+// To update the cards with shuffeled ones at the begining.
+updateCards(cards);
 
-//update the cards list with the new shuffled cards.
-cards = document.querySelectorAll('.card');
 
 // Creat event handler function for all cards.
 
@@ -95,7 +105,7 @@ function match (card) {
 // Declare a function that checks if all the cards were matched
 
 function checkForEnd () {
-    if (cardsArray.every((element) => element.classList.contains('match'))) {
+    if (Array.from(cards).every((element) => element.classList.contains('match'))) {
         // End the game
     }
 }
