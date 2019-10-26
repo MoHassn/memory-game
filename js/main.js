@@ -109,3 +109,21 @@ function checkForEnd () {
         // End the game
     }
 }
+
+/*
+   Define a function to call it when we wand to restart the game
+*/
+function restart () {
+    // Hide all the cards
+    Array.from(cards).forEach((elem) => elem.className = 'card');
+    // Shuffle the cards and
+    updateCards(cards);
+
+    openCards = [];
+    // Reset the moves counter
+    moves = 0;
+    document.querySelector('.moves').innerText = moves;
+}
+
+// Add event listener to the restart button
+document.querySelector('.restart').addEventListener('click', restart);
