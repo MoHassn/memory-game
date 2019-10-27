@@ -3,6 +3,10 @@ let cards = document.querySelectorAll('.card');
 
 const board = document.querySelector('.board');
 
+let modal = document.querySelector('.modal');
+let modalContent = document.querySelector('.modal-content');
+
+
 // This is for the timer to know if the game is running or not
 
 let playing = false;
@@ -21,7 +25,7 @@ function shuffle (arr) {
     return arr;
 }
 /*
-  Wrap all the code that updates the content on the page in a function
+Wrap all the code that updates the content on the page in a function
 */
 function updateCards(cards) {
     // Crating an arry of he cards to pass it to the shuffle function
@@ -113,7 +117,13 @@ function match (card) {
 
 function checkForEnd () {
     if (Array.from(cards).every((element) => element.classList.contains('match'))) {
-        // End the game
+        playing = false;
+        const SCORE_PANEL = document.querySelector('.score-panel');
+        const MODAL_SCORE_PANEL = SCORE_PANEL.cloneNode(true);
+        MODAL_SCORE_PANEL.lastElementChild.remove();
+        const TO_INSERT_BEFORE = document.querySelector('.to-inset-before');
+        modalContent.insertBefore(MODAL_SCORE_PANEL, TO_INSERT_BEFORE);
+        modal.style.display = 'block';
     }
 }
 
@@ -134,6 +144,11 @@ function restart () {
     // Reset the timer
     seconds = 0;
     document.querySelector('.time').innerText = seconds;
+
+    // Remove the socre panel from the modal if exists
+    if (modal.querySelector('.score-panel')) {
+        modal.querySelector('.score-panel').remove();
+    }
 }
 
 // Add event listener to the restart button
@@ -148,3 +163,9 @@ function setTime () {
 }
 
 setInterval(setTime, 1000);
+
+document.addEventListener('click', function (event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+})

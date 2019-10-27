@@ -70,3 +70,39 @@ ul.stars {
 .restart {
     cursor: pointer;
 }
+/* style for the popup ending message */
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 150px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+    height: 300px;
+    background-color: #b3db6d;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.play-again {
+    width: 130px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #7a506f;
+    color: #ABC8C0;
+}
