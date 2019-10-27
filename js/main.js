@@ -85,6 +85,9 @@ let moves = 0;
 function incrementMoves () {
     moves++;
     document.querySelector('.moves').innerText = moves;
+    if(moves == 10 || moves == 20) {
+        document.querySelector('.a-star').remove();
+    }
 }
 // Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
 function checkForMatch () {
