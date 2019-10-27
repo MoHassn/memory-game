@@ -3,6 +3,10 @@ let cards = document.querySelectorAll('.card');
 
 const board = document.querySelector('.board');
 
+// This is for the timer to know if the game is running or not
+
+let playing = false;
+
 //Create the shuffling function
 function shuffle (arr) {
     let currentIndex = arr.length-1, temp, randomIndex;
@@ -35,7 +39,7 @@ function updateCards(cards) {
     board.appendChild(NEW_CARDS);
     //update the cards list with the new shuffled cards.
     cards = document.querySelectorAll('.card');
-
+    playing = true;
 }
 
 // To update the cards with shuffeled ones at the begining.
@@ -123,7 +127,21 @@ function restart () {
     // Reset the moves counter
     moves = 0;
     document.querySelector('.moves').innerText = moves;
+
+    // Reset the timer
+    seconds = 0;
+    document.querySelector('.time').innerText = seconds;
 }
 
 // Add event listener to the restart button
 document.querySelector('.restart').addEventListener('click', restart);
+
+let seconds = 0;
+function setTime () {
+    if (playing) {
+        seconds ++;
+        document.querySelector('.time').innerText = seconds;
+    }
+}
+
+setInterval(setTime, 1000);
