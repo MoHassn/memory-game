@@ -176,3 +176,10 @@ document.addEventListener('click', function (event) {
         modal.style.display = 'none';
     }
 })
+const PLAY_AGAIN = modal.querySelector('.play-again');
+
+function playAgain () {
+    modal.style.display = 'none';
+    restart();
+}
+PLAY_AGAIN.addEventListener('click', playAgain);
