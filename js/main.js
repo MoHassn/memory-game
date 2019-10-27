@@ -85,12 +85,14 @@ let moves = 0;
 
 // Define a function that increment the moves and change it on the page
 // every time there is a checkForMatch
-
+let stars = document.querySelectorAll('.a-star');
+let starToBeHidden = 2;
 function incrementMoves () {
     moves++;
     document.querySelector('.moves').innerText = moves;
     if(moves == 10 || moves == 20) {
-        document.querySelector('.a-star').remove();
+        stars[starToBeHidden].style.display = 'none';
+        starToBeHidden --;
     }
 }
 // Declare a function that checks if the two open cards matchs or not( and handle every case) and then empty the openCards list.
@@ -148,6 +150,11 @@ function restart () {
     // Remove the socre panel from the modal if exists
     if (modal.querySelector('.score-panel')) {
         modal.querySelector('.score-panel').remove();
+    }
+
+    // Reset the stars
+    for (let star of stars) {
+        star.style.display = 'list-item';
     }
 }
 
