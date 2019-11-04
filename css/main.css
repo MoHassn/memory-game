@@ -106,3 +106,10 @@ ul.stars {
     background-color: #7a506f;
     color: #ABC8C0;
 }
+/*
+    fixing the random clicks on chrome
+*/
+svg,
+path {
+  pointer-events: none;
+}
