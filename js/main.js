@@ -65,7 +65,7 @@ board.addEventListener('click', handleCardClick);
 
 // Create open function that opens the cards (adds 'open' class to the card and add the card to openCards list).
 function open (card) {
-    if (!card.classList.contains('open') && !card.classList.contains('match')){
+    if (!card.classList.contains('open') && !card.classList.contains('match') && openCards.length < 2){
         card.classList.add('open');
         addToOpenCards(card);
     }
@@ -104,9 +104,11 @@ function checkForMatch () {
         checkForEnd();
         openCards = [];
     }else {
-        openCards[0].classList.remove('open');
-        openCards[1].classList.remove('open');
-        openCards = [];
+        setTimeout(()=>{
+          openCards[0].classList.remove('open');
+          openCards[1].classList.remove('open');
+          openCards = [];
+        }, 300)
     }
 }
 //Declare match() function that adds 'match' class to the two matched cards.
